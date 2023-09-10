@@ -40,6 +40,7 @@ def get_phone(name):
         raise KeyError
     return f"{name.title()}'s phone number is {CONTACTS_DICT[name]}."
 
+
 # extract all contacts from our dictionary
 @input_error
 def show_all():
@@ -107,11 +108,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-            
-
-        
-
-
-
-
-
