@@ -1,13 +1,23 @@
-### This is a helper console bot script that will recognize commands entered from the keyboard and respond accordingly.
+### We continue to develop our virtual assistant with a CLI interface.
 
-The bot is in an endless loop waiting for a user command.
-The bot is not case sensitive.
-The bot accepts commands:
+Our assistant already knows how to interact with the user using the command line, receiving commands and arguments and performing the necessary actions. In this task, we will work on the internal logic of the assistant, how data is stored, what data it is, and what can be done with it.
 
-- `"hello"`  replies to the console "How can I help you?"
-- `"add ..."`  With this command, the bot saves a new contact in memory (in the dictionary, for example). Instead of ... the user enters the name and phone number, necessarily with a space.
-- `"change ..."`  With this command, the bot stores the new phone number of the existing contact in memory. Instead of ... the user enters the name and phone number, necessarily with a space.
-- `"phone ...."`  With this command, the bot outputs the phone number for the specified contact to the console. Instead of ... the user enters the name of the contact whose number should be displayed.
-- `"show all"`  With this command, the bot outputs all saved contacts with phone numbers to the console.
-- `"good bye"`, `"close"`, `"exit"`  by any of these commands, the bot ends its work after outputting `"Good bye!"` to the console.
+We will use object-oriented programming for these purposes. First, let's select several entities (models) with which we will work.
+
+The user will have an `address book` or a `contact book`. This `contact book` contains `records`. Each `record` contains some set of `fields`.
+
+In this way, we have described the entities (classes) that need to be implemented. Next, we will consider the requirements for these classes and establish their relationship, the rules by which they will interact.
+
+Essences:
+
+`Field:` Base class for record fields. It will be the parent for all fields, it implements common logic for all fields
+
+`Name:` A class for storing the name of a contact. Mandatory field.
+
+`Phone:` A class for storing a phone number. Has format validation (10 digits). An optional field with a phone number, and one Record can contain several such fields.
+
+`Record:` A class for storing information about a contact, including name and phone list. Responsible for the logic of adding/removing/editing optional fields and storing the mandatory field Name
+
+`AddressBook:` A class for storing and managing records. Inherits from UserDict, and contains the logic of searching for entries in this class
+
 ---
